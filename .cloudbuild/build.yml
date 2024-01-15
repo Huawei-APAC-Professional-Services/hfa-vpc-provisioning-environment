@@ -15,7 +15,7 @@ steps:
           curl -fsSL ${terraform_download_url} -o terraform.zip
           unzip terraform.zip
           ./terraform init
-          ./terraform apply -auto-approve -no-color -var="accesskey_agent=${AccessKey}" -var="encrypted_secretkey_agent=${AgentSecretKey}" -var="codearts_cluster_id=${ClusterId}" -var="codearts_project_id=${AgentToken}"
+          ./terraform apply -auto-approve -no-color -var="accesskey_agent=${AccessKey}" -var="encrypted_secretkey_agent=${AgentSecretKey}" -var="codearts_cluster_id=${ClusterId}" -var="codearts_project_id=${codearts_project_id}"
   - upload_artifact:
       inputs:
         version: latest
