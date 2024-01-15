@@ -14,6 +14,7 @@ steps:
           export HW_REGION_NAME=${Region}
           curl -fsSL ${terraform_download_url} -o terraform.zip
           unzip terraform.zip
+          cat terraform.tfstate
           ./terraform init
           ./terraform apply -auto-approve -no-color -var="accesskey_agent=${AccessKey}" -var="encrypted_secretkey_agent=${AgentSecretKey}" -var="codearts_cluster_id=${ClusterId}" -var="codearts_project_id=${codearts_project_id}"
   - upload_artifact:
