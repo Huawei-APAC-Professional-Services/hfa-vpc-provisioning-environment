@@ -1,6 +1,15 @@
 ---
 version: 2.0
 steps:
+  PRE_BUILD:
+  - checkout:
+      name: "checkout"
+      inputs:
+        scm: "codehub"
+        url: "git@codehub.devcloud.ap-southeast-3.huaweicloud.com:hfa00002/hfa-vpc-provisioning-environment.git"
+        branch: "main"
+        lfs: false
+        submodule: false
   BUILD:
   - download_artifact:
       inputs:
