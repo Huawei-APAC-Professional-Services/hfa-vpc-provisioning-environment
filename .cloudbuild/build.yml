@@ -21,6 +21,7 @@ steps:
           export HW_ACCESS_KEY=${AccessKey}
           export HW_SECRET_KEY=${SecretKey}
           export HW_REGION_NAME=${Region}
+          export TF_LOG=DEBUG
           curl -fsSL ${terraform_download_url} -o terraform.zip
           unzip terraform.zip
           cat terraform.tfstate

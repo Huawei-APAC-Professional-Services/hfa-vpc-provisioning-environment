@@ -60,7 +60,7 @@ variable "postgresql_mode" {
   description = "single,ha,replica are available mode"
 }
 
-variable "postgresql_vpcs" {
+variable "postgresql_vcpus" {
   type    = number
   default = 2
 }

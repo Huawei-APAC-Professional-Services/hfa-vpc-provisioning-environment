@@ -127,14 +127,12 @@ resource "huaweicloud_compute_instance" "main" {
   }
 }
 
-//
-
 resource "huaweicloud_rds_parametergroup" "terraform_backend" {
   name        = "terraform_backend"
   description = "Backend for Terraform"
   datastore {
     type    = "postgresql"
-    version = "15"
+    version = "14"
   }
 }
 
@@ -142,7 +140,7 @@ data "huaweicloud_rds_flavors" "postgresql" {
   db_type           = "PostgreSQL"
   db_version        = "15"
   instance_mode     = var.postgresql_mode
-  vcpus             = var.postgresql_vpcs
+  vcpus             = var.postgresql_vcpus
   memory            = var.postgresql_mem
   availability_zone = var.availability_zone
 }
