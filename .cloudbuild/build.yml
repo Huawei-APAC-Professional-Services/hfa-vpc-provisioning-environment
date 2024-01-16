@@ -21,10 +21,8 @@ steps:
           export HW_ACCESS_KEY=${AccessKey}
           export HW_SECRET_KEY=${SecretKey}
           export HW_REGION_NAME=${Region}
-          export TF_LOG=DEBUG
           curl -fsSL ${terraform_download_url} -o terraform.zip
           unzip terraform.zip
-          cat terraform.tfstate
           ./terraform init
           ./terraform apply -auto-approve -no-color -var="accesskey_agent=${AccessKey}" -var="encrypted_secretkey_agent=${AgentSecretKey}" -var="codearts_cluster_id=${ClusterId}" -var="codearts_project_id=${codearts_project_id}"
   - upload_artifact:

@@ -78,7 +78,6 @@ data "huaweicloud_images_image" "main" {
   most_recent = true
 }
 
-
 resource "huaweicloud_networking_secgroup" "codearts_agent" {
   name        = "${var.resource_prefix}-codearts-agent"
   description = "allow agent to access internet"
