@@ -86,6 +86,7 @@ resource "huaweicloud_networking_secgroup" "codearts_agent" {
 resource "huaweicloud_networking_secgroup" "terraform_pg" {
   name        = "${var.resource_prefix}-terraform-pg"
   description = "allow agent to access database"
+  depends_on = [ huaweicloud_networking_secgroup.codearts_agent ]
 }
 
 resource "huaweicloud_networking_secgroup_rule" "codearts_agent" {
