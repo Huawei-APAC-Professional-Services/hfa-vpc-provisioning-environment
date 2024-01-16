@@ -116,9 +116,11 @@ resource "huaweicloud_compute_instance" "main" {
   image_id           = data.huaweicloud_images_image.main.id
   flavor_id          = data.huaweicloud_compute_flavors.main.ids[0]
   user_data          = data.template_file.init.rendered
+  admin_pass         = "hwcloud2024!"
   agency_name        = huaweicloud_identity_agency.codearts_agent.name
   security_group_ids = [huaweicloud_networking_secgroup.codearts_agent.id]
   availability_zone  = var.availability_zone
+  eip_id             = huaweicloud_vpc_eip.main.id
 
   network {
     uuid = huaweicloud_vpc_subnet.agent_subnet.id
@@ -147,7 +149,7 @@ data "huaweicloud_rds_flavors" "postgresql" {
 
 resource "huaweicloud_rds_instance" "terraform_backend" {
   name              = "terraform_backend"
-  flavor            = data.huaweicloud_rds_flavors.postgresql.flavors[0].id
+  flavor            = "rds.pg.n1.large.2"
   vpc_id            = huaweicloud_vpc.agent_vpc.id
   subnet_id         = huaweicloud_vpc_subnet.terraform_backend_subnet.id
   security_group_id = huaweicloud_networking_secgroup.terraform_pg.id
@@ -155,12 +157,12 @@ resource "huaweicloud_rds_instance" "terraform_backend" {
 
   db {
     type     = "PostgreSQL"
-    version  = "15"
+    version  = "14"
     password = "Huangwei!120521"
   }
 
   volume {
-    type = "ULTRAHIGH"
+    type = "CLOUDSSD"
     size = 40
   }
 
