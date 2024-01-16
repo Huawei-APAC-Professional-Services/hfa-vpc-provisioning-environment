@@ -28,4 +28,4 @@ steps:
   - upload_artifact:
       inputs:
         version: latest
-        path: /terraform/terraform.tfstate
+        path: terraform.tfstate
